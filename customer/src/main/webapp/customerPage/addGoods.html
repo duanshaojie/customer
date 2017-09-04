@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品添加</title>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../assets/ico/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="../assets/ico/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="../assets/ico/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/ico/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="../assets/ico/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="../assets/ico/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="../assets/ico/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="../assets/ico/apple-touch-icon-152x152.png" />
+
+    <!-- Vendor CSS-->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/skycons/css/skycons.css" rel="stylesheet" />
+    <link href="../assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/css/pace.preloader.css" rel="stylesheet" />
+
+    <!-- Plugins CSS-->
+    <link href="../assets/plugins/bootkit/css/bootkit.css" rel="stylesheet" />
+    <link href="../assets/plugins/select2/select2.css" rel="stylesheet" />
+    <link href="../assets/plugins/jquery-datatables-bs3/css/datatables.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link href="../assets/css/jquery.mmenu.css" rel="stylesheet" />
+
+    <!-- Page CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/add-ons.min.css" rel="stylesheet" />
+
+    <!-- end: CSS file-->
+
+    <!-- Head Libs -->
+    <script src="../assets/plugins/modernizr/js/modernizr.js"></script>
+</head>
+<body>
+<div class="row">
+
+    <div class="col-sm-6">
+        <div class="panel panel-default bk-bg-white">
+            <div class="panel-body">
+                <div class="form-group has-success">
+                    <label class="control-label" for="goods_name">商品名称</label>
+                    <input type="text" class="form-control" id="goods_name" />
+                </div>
+                <div class="form-group has-warning">
+                    <label class="control-label" for="goods_code">商品编号</label>
+                    <input type="text" class="form-control" id="goods_code" />
+                </div>
+                <div class="form-group has-warning">
+                    <label class="control-label" for="goods_counts">数量</label>
+                    <input type="text" class="form-control" id="goods_counts" />
+                </div>
+                <div class="form-group has-success">
+                    <label class="control-label" for="goods_price">商品价格</label>
+                    <input type="text" class="form-control" id="goods_price" />
+                </div>
+                <div class="form-group has-error">
+                    <label class="control-label" for="goods_type">商品类型</label>
+                    <div class="col-md-9">
+                        <select id="goods_type" name="select" class="form-control" size="1">
+                            <option value="0"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group has-success">
+                    <label class="control-label" for="goods_price">商品描述</label>
+                    <input type="text" class="form-control" id="goods_content" />
+                </div>
+                <div class="form-group has-error">
+                    <label class="control-label" for="goods_type">图片地址</label>
+                    <input type="text" class="form-control" id="goods_url" />
+                </div>
+                <div style="margin:0 auto;width:20%">
+                    <button type="button" id="add" style="margin:0 auto;" class="btn btn-success btn-setting" onclick="add()">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Vendor JS-->
+<script src="../assets/vendor/js/jquery.min.js"></script>
+<script src="../assets/vendor/js/jquery-2.1.1.min.js"></script>
+<script src="../assets/vendor/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/skycons/js/skycons.js"></script>
+<script src="../assets/vendor/js/pace.min.js"></script>
+
+<!-- Plugins JS-->
+<script src="../assets/plugins/moment/js/moment.min.js"></script>
+<script src="../assets/plugins/select2/select2.js"></script>
+<script src="../assets/plugins/jquery-datatables/media/js/jquery.dataTables.js"></script>
+<script src="../assets/plugins/jquery-datatables/extras/TableTools/js/dataTables.tableTools.min.js"></script>
+<script src="../assets/plugins/jquery-datatables-bs3/js/datatables.js"></script>
+<script src="../assets/plugins/sparkline/js/jquery.sparkline.min.js"></script>
+
+<!-- Theme JS -->
+<script src="../assets/js/jquery.mmenu.min.js"></script>
+<script src="../assets/js/core.min.js"></script>
+<script src="../assets/layer/layer.js"></script>
+<script src="../assets/main.js"></script>
+
+
+
+<!-- Pages JS -->
+<script src="../assets/js/pages/table-advanced.js"></script>
+</body>
+<script type="text/javascript">
+    $(function() {
+        addressUrl = url+"goods/addGoods";
+        var str=location.href;
+        console.log(str);
+        if(RegExp("update").test(str)){
+            addressUrl = url+"goods/update";
+            $('#add').text("更新");
+            goodsCode = GetQueryString("update");
+            $.ajax({
+                "async": true,
+                "crossDomain": true,
+                "method": "GET",
+                "headers": {
+                    "content-type": "application/json",
+                    "cache-control": "no-cache",
+                    "postman-token": "f7b21967-8095-8bea-5f60-ed8da73aaa16"
+                },
+                "processData": false,
+                url: url+"goods/find/"+goodsCode,
+                dataType: "JSON",
+                success: function(date){
+                    console.log("成功!");
+                    console.log(date);
+                    $('#goods_name').val(date['goodsName']);
+                    $('#goods_price').val(date['price']);
+                    $('#goods_counts').val(date['counts']);
+                    $('#goods_type').val(date['type']);
+                    $('#goods_type').disabled = true;
+                    $('#goods_code').val(date['goodsCode']);
+                    $('#goods_content').val(date['content']);
+                    $('#goods_url').val(date['url']);
+                },
+                error:function(date){
+                    alert(date['responseText']);
+                }
+            });
+        }
+        var selectCount = $('#goods_type');
+        $.ajax({
+            "async": true,
+            "crossDomain": true,
+            "method": "GET",
+            "headers": {
+                "content-type": "application/json",
+                "cache-control": "no-cache",
+                "postman-token": "f7b21967-8095-8bea-5f60-ed8da73aaa16"
+            },
+            "processData": false,
+            url: url+"statis/getType",
+            dataType: "JSON",
+            success: function(date){
+                for(var i = 0 ; i<date.length;i++){
+                    var option=document.createElement("option");
+                    selectCount.append(option);
+                    option.value = date[i]['type'];
+                    option.innerHTML = date[i]['type'];
+                }
+            },
+            error:function(date){
+                alert(date['responseText']);
+            }
+        });
+
+    });
+
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+
+    function add(){
+        var goodsname = $('#goods_name').val();
+        var goodsprice = $('#goods_price').val();
+        var goodscount = $('#goods_counts').val();
+        var goodstype = $('#goods_type').val();
+        var goodscode = $('#goods_code').val();
+        var content = $('#goods_content').val();
+        var url = $('#goods_url').val();
+        if(goodsname==""||goodsprice==""||goodscount==""||goodstype==0||goodscode==""||content==""||url==""){
+            alert("信息不完整，请输入完整信息");
+            return false;
+        }
+        $.ajax({
+            "async": true,
+            "crossDomain": true,
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "cache-control": "no-cache",
+                "postman-token": "f7b21967-8095-8bea-5f60-ed8da73aaa16"
+            },
+            "processData": false,
+            url: addressUrl,
+            data: "{\"goodsname\":"+"\""+goodsname+"\""+
+            ",\"goodsprice\":"+"\""+goodsprice+"\""+
+            ",\"goodscount\":"+"\""+goodscount+"\""+
+            ",\"goodstype\":"+"\""+goodstype+"\""+
+            ",\"goodscode\":"+"\""+goodscode+"\""+
+            ",\"content\":"+"\""+content+"\""+
+            ",\"url\":"+"\""+url+"\""+
+            "}",
+            dataType: "text",
+               success: function(date){
+                   alert("成功!");
+                   parent.location.href = "operation.html?ranparam="+Math.ceil(Math.random()*10000000000);
+               },
+                error:function(date){
+                    alert(date['responseText']);
+                }
+            });
+    }
+</script>
+</html>

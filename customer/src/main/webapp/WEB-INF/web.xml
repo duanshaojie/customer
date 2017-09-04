@@ -1,0 +1,70 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<!--remove the comment on the following line to enable spring security -->
+		<param-value>classpath:spring-beans.xml
+		</param-value>
+	</context-param>
+  
+  <context-param>
+		<param-name>spring.profiles.default</param-name>
+		<param-value>mysql</param-value>
+	</context-param>
+
+	<!--######################## rest api ######################## -->
+
+	<!-- RESTEasy configuration -->
+	<listener>
+		<listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
+		</listener-class>
+	</listener>
+
+	<!-- RESTEasy <-> Spring connector (RESTEasy can access Spring beans) -->
+	<listener>
+		<!-- org.springframework.web.context.ContextLoaderListener -->
+		<listener-class>org.jboss.resteasy.plugins.spring.SpringContextLoaderListener
+		</listener-class>
+	</listener>
+
+
+	<!-- RESTEasy HTTP Request processor -->
+	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/api</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>restservlet</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>restservlet</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
+	
+<!--  	<listener>
+		<listener-class>com.wechat.customer.util.CreateAdminUtils</listener-class>
+	</listener> -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
