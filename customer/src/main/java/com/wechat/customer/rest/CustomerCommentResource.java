@@ -1,6 +1,5 @@
 package com.wechat.customer.rest;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -31,11 +30,19 @@ import com.wechat.customer.po.CustomerUserEntity;
 import com.wechat.customer.service.CustomerCommentService;
 import com.wechat.customer.service.CustomerGoodsService;
 import com.wechat.customer.service.CustomerOrderService;
-import com.wechat.customer.util.CustomerUtils;
 import com.wechat.customer.util.JsonHelper;
 import com.wechat.customer.util.ResponseBuildHelper;
 
 import io.swagger.annotations.ApiParam;
+
+/**
+ * <b>类名：</b>CustomerCommentResource.java<br>
+ * <p><b>标题：</b>评论</p>
+ * <p><b>描述：</b>评论API</p>
+ * @author <font color='blue'>edison_dsj@163.com</font>
+ * @date
+ * 桃之夭夭,灼灼其华
+ */
 
 @Path("comment")
 @Component

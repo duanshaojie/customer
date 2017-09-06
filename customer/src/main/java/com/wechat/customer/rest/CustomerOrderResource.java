@@ -1,6 +1,5 @@
 package com.wechat.customer.rest;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -24,17 +23,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.wechat.customer.po.CustomerGoodsEntity;
 import com.wechat.customer.po.CustomerOrderEntity;
 import com.wechat.customer.po.CustomerUserEntity;
 import com.wechat.customer.service.CustomerGoodsService;
 import com.wechat.customer.service.CustomerOrderService;
 import com.wechat.customer.util.CustomerUtils;
-import com.wechat.customer.util.JsonHelper;
 import com.wechat.customer.util.ResponseBuildHelper;
 
 import io.swagger.annotations.ApiParam;
+
+/**
+ * <b>类名：</b>CustomerOrderResource.java<br>
+ * <p><b>标题：</b>订单</p>
+ * <p><b>描述：</b>订单API</p>
+ * @author <font color='blue'>edison_dsj@163.com</font>
+ * @date
+ * 桃之夭夭,灼灼其华
+ */
 
 @Path("order")
 @Component

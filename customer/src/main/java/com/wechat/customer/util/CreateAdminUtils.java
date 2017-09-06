@@ -1,7 +1,5 @@
 package com.wechat.customer.util;
 
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +9,14 @@ import com.wechat.customer.dao.CustomerGoodsTypeDao;
 import com.wechat.customer.dao.CustomerUserDao;
 import com.wechat.customer.po.CustomerGoodsTypeEntity;
 import com.wechat.customer.po.CustomerUserEntity;
+
 /**
- * 服务器启动自动创建admin管理员账号
- * @author dev
- *
+ * <b>类名：</b>CreateAdminUtils.java<br>
+ * <p><b>标题：</b>服务器启动自动创建admin管理员账号</p>
+ * <p><b>描述：</b></p>
+ * @author <font color='blue'>edison_dsj@163.com</font>
+ * @date
+ * 桃之夭夭,灼灼其华
  */
 @Component
 public class CreateAdminUtils{

@@ -37,6 +37,15 @@ import com.wechat.customer.vo.GoodsVO;
 
 import io.swagger.annotations.ApiParam;
 
+/**
+ * <b>类名：</b>CustomerGoodsResource.java<br>
+ * <p><b>标题：</b>商品</p>
+ * <p><b>描述：</b>商品API</p>
+ * @author <font color='blue'>edison_dsj@163.com</font>
+ * @date
+ * 桃之夭夭,灼灼其华
+ */
+
 @Path("goods")
 @Component
 public class CustomerGoodsResource {

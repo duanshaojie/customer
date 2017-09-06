@@ -32,11 +32,19 @@ import com.wechat.customer.po.CustomerOrderEntity;
 import com.wechat.customer.po.CustomerUserEntity;
 import com.wechat.customer.service.CustomerGoodsService;
 import com.wechat.customer.service.CustomerOrderService;
-import com.wechat.customer.util.CustomerUtils;
 import com.wechat.customer.util.JsonHelper;
 import com.wechat.customer.util.ResponseBuildHelper;
 
 import io.swagger.annotations.ApiParam;
+
+/**
+ * <b>类名：</b>StatisticsResource.java<br>
+ * <p><b>标题：</b>统计</p>
+ * <p><b>描述：</b>统计API</p>
+ * @author <font color='blue'>edison_dsj@163.com</font>
+ * @date
+ * 桃之夭夭,灼灼其华
+ */
 
 @Path("statis")
 @Component

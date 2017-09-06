@@ -1,7 +1,15 @@
 package com.wechat.customer.rest;
 
+/**
+ * <b>类名：</b>UserResources.java<br>
+ * <p><b>标题：</b>用户</p>
+ * <p><b>描述：</b>用户API</p>
+ * @author <font color='blue'>edison_dsj@163.com</font>
+ * @date
+ * 桃之夭夭,灼灼其华
+ */
+
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
